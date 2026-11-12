@@ -1,0 +1,17 @@
+[
+  {
+    "id": "C1",
+    "name": "Downtown",
+    "zip": "90012"
+  },
+  {
+    "id": "C2",
+    "name": "Northside",
+    "zip": "90042"
+  },
+  {
+    "id": "C3",
+    "name": "Lakeview",
+    "zip": "90026"
+  }
+]

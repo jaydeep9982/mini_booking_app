@@ -1,0 +1,20 @@
+# Eclipse workspace
+.metadata/
+.settings/
+.classpath
+.project
+
+# Java build files
+target/
+*.class
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "D1",
+    "name": "Dr. Asha Rao",
+    "type": "Optometrist",
+    "clinicId": "C1"
+  },
+  {
+    "id": "D2",
+    "name": "Dr. Ben Carter",
+    "type": "Optometrist",
+    "clinicId": "C2"
+  },
+  {
+    "id": "D3",
+    "name": "Dr. Meera Iyer",
+    "type": "Ophthalmologist",
+    "clinicId": "C1"
+  },
+  {
+    "id": "D4",
+    "name": "Dr. Sam Lee",
+    "type": "Ophthalmologist",
+    "clinicId": "C3"
+  },
+  {
+    "id": "D5",
+    "name": "Dr. Nina Patel",
+    "type": "Optometrist",
+    "clinicId": "C3"
+  }
+]
