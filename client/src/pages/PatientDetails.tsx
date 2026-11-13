@@ -1,7 +1,12 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import type { Patient } from "../types/Booking";
+
 
 function PatientDetails() {
+
+    const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -52,38 +57,27 @@ function PatientDetails() {
             return;
         }
 
-        const patientData = {
+        const patientData: Patient = {
             firstName: firstName.trim(),
             lastName: lastName.trim(),
             phone,
             zip
         };
 
-        console.log(patientData);
-
-        alert("Patient details added successfully!");
-
-        // Clear all fields
-        setFirstName("");
-        setLastName("");
-        setPhone("");
-        setZip("");
-
-        // Clear errors
-        setErrors({
-            firstName: "",
-            lastName: "",
-            phone: "",
-            zip: ""
+        navigate("/questions", {
+            state: { patient: patientData }
         });
     };
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 mb-5">
             <div className="row justify-content-center">
                 <div className="col-md-6">
 
-                    <h2 className="mb-4">Patient Details</h2>
+                    <h2 className="mb-2">Patient Details</h2>
+                    <p className="text-muted">
+                        Please enter your personal information.
+                    </p>
 
                     <form onSubmit={handleSubmit}>
 
@@ -95,7 +89,9 @@ function PatientDetails() {
                                 value={firstName}
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
-                            <small className="text-danger">{errors.firstName}</small>
+                            <small className="text-danger">
+                                {errors.firstName}
+                            </small>
                         </div>
 
                         <div className="mb-3">
@@ -106,7 +102,9 @@ function PatientDetails() {
                                 value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
                             />
-                            <small className="text-danger">{errors.lastName}</small>
+                            <small className="text-danger">
+                                {errors.lastName}
+                            </small>
                         </div>
 
                         <div className="mb-3">
@@ -118,7 +116,9 @@ function PatientDetails() {
                                 maxLength={10}
                                 onChange={(e) => setPhone(e.target.value)}
                             />
-                            <small className="text-danger">{errors.phone}</small>
+                            <small className="text-danger">
+                                {errors.phone}
+                            </small>
                         </div>
 
                         <div className="mb-3">
@@ -130,7 +130,9 @@ function PatientDetails() {
                                 maxLength={5}
                                 onChange={(e) => setZip(e.target.value)}
                             />
-                            <small className="text-danger">{errors.zip}</small>
+                            <small className="text-danger">
+                                {errors.zip}
+                            </small>
                         </div>
 
                         <button type="submit" className="btn btn-primary">

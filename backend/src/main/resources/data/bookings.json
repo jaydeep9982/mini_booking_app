@@ -1,1 +1,17 @@
-[]
+[ {
+  "id" : "6b5aca49-285f-4037-a565-32735d204573",
+  "patient" : {
+    "firstName" : "Jaydeep",
+    "lastName" : "Patidar",
+    "phone" : "9982600766",
+    "zip" : "32651"
+  },
+  "answers" : {
+    "reason" : "CONTACT_LENS",
+    "insurance" : "NONE",
+    "clinicId" : "ANY",
+    "timeOfDay" : "AFTERNOON"
+  },
+  "slotId" : "S3",
+  "createdAt" : [ 2026, 11, 13, 17, 44, 9, 322491100 ]
+} ]
