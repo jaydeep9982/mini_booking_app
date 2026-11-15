@@ -251,9 +251,9 @@ function Questions() {
 
                     {[
                       { id: "ANY", label: "Any Clinic" },
-                      { id: "C1", label: "Clinic 1" },
-                      { id: "C2", label: "Clinic 2" },
-                      { id: "C3", label: "Clinic 3" },
+                      { id: "C1", label: "Downtown" },
+                      { id: "C2", label: "Northside" },
+                      { id: "C3", label: "Lakeview" },
                     ].map((clinic) => (
                       <div className="form-check mb-3" key={clinic.id}>
                         <input

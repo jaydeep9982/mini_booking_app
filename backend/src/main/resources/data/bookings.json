@@ -14,4 +14,52 @@
   },
   "slotId" : "S3",
   "createdAt" : [ 2026, 11, 13, 17, 44, 9, 322491100 ]
+}, {
+  "id" : "b84b4ad1-1aa4-4bf1-8fd1-08d8b5c3acc6",
+  "patient" : {
+    "firstName" : "John",
+    "lastName" : "Clark",
+    "phone" : "8765432101",
+    "zip" : "54323"
+  },
+  "answers" : {
+    "reason" : "ROUTINE_EXAM",
+    "insurance" : "NONE",
+    "clinicId" : "C1",
+    "timeOfDay" : "AFTERNOON"
+  },
+  "slotId" : "S4",
+  "createdAt" : [ 2026, 11, 15, 19, 34, 58, 418984900 ]
+}, {
+  "id" : "8f666f9d-1d67-4025-8a2f-811f01a558a3",
+  "patient" : {
+    "firstName" : "JAYDEEP",
+    "lastName" : "PATIDAR",
+    "phone" : "9982600766",
+    "zip" : "41105"
+  },
+  "answers" : {
+    "reason" : "ROUTINE_EXAM",
+    "insurance" : "MEDICAL",
+    "clinicId" : "C1",
+    "timeOfDay" : "MORNING"
+  },
+  "slotId" : "S5",
+  "createdAt" : [ 2026, 11, 15, 19, 53, 29, 903525600 ]
+}, {
+  "id" : "0ee80446-29d3-4130-91e4-dcf935cab9f3",
+  "patient" : {
+    "firstName" : "JAYDEEP",
+    "lastName" : "PATIDAR",
+    "phone" : "9982600766",
+    "zip" : "41105"
+  },
+  "answers" : {
+    "reason" : "CONTACT_LENS",
+    "insurance" : "VISION",
+    "clinicId" : "C1",
+    "timeOfDay" : "AFTERNOON"
+  },
+  "slotId" : "S1",
+  "createdAt" : [ 2026, 11, 15, 20, 46, 50, 445979700 ]
 } ]

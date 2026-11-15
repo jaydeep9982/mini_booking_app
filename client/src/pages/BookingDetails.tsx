@@ -15,17 +15,16 @@ function BookingDetails() {
 
   useEffect(() => {
     const loadBooking = async () => {
-      if (!id) {
-        setError("Invalid booking ID.");
-        setLoading(false);
-        return;
-      }
-
       try {
+        if (!id) {
+          setError("Invalid booking ID.");
+          return;
+        }
+
         const data = await getBookingById(id);
         setBooking(data);
       } catch (err) {
-        console.error("Booking details error:", err);
+        console.error(err);
         setError("Unable to load booking details.");
       } finally {
         setLoading(false);
@@ -35,10 +34,20 @@ function BookingDetails() {
     loadBooking();
   }, [id]);
 
+  const Detail = ({ label, value }: {
+    label: string;
+    value: string;
+  }) => (
+    <div className="col-md-6 mb-3">
+      <div className="text-muted small mb-1">{label}</div>
+      <div className="fw-semibold">{value || "Not available"}</div>
+    </div>
+  );
+
   if (loading) {
     return (
       <div className="container py-5 text-center">
-        <div className="spinner-border text-primary"></div>
+        <div className="spinner-border text-primary" />
         <p className="mt-3">Loading booking details...</p>
       </div>
     );
@@ -46,15 +55,11 @@ function BookingDetails() {
 
   if (error || !booking) {
     return (
-      <div className="container py-5">
+      <div className="container py-5 text-center">
         <div className="alert alert-danger">
           {error || "Booking not found."}
         </div>
-
-        <button
-          className="btn btn-outline-primary"
-          onClick={() => navigate("/")}
-        >
+        <button className="btn btn-primary" onClick={() => navigate("/")}>
           Back to Home
         </button>
       </div>
@@ -64,91 +69,73 @@ function BookingDetails() {
   return (
     <div className="container py-5">
 
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <h2 className="fw-bold">Booking Details</h2>
-          <p className="text-muted mb-0">
-            Complete information about this appointment.
-          </p>
-        </div>
-
-        <span className="badge bg-success fs-6">
+      <div className="text-center mb-4">
+        <h2 className="fw-bold">Booking Details</h2>
+        <p className="text-muted">
+          Complete information about your appointment.
+        </p>
+        <span className="badge bg-success px-3 py-2">
           Booked
         </span>
       </div>
 
       <div className="card border-0 shadow-sm mx-auto"
-        style={{ maxWidth: "750px" }}>
+        style={{ maxWidth: "850px" }}>
 
-        <div className="card-body p-4">
+        <div className="card-body p-4 p-md-5">
 
-          <h5 className="fw-bold mb-3">
-            Booking Information
-          </h5>
+          <h5 className="fw-bold mb-4">Booking Information</h5>
 
-          <p>
-            <strong>Booking ID:</strong> {booking.id}
-          </p>
+          <div className="row">
+            <Detail label="Booking ID" value={booking.id} />
+            <Detail label="Slot ID" value={booking.slotId} />
+            <Detail
+              label="Booking Created"
+              value={new Date(booking.createdAt).toLocaleString()}
+            />
+          </div>
 
-          <p>
-            <strong>Slot ID:</strong> {booking.slotId}
-          </p>
+          <hr className="my-4" />
 
-          <p>
-            <strong>Booking Created:</strong>{" "}
-            {new Date(booking.createdAt).toLocaleString()}
-          </p>
+          <h5 className="fw-bold mb-4">Patient Information</h5>
 
-          <hr />
+          <div className="row">
+            <Detail
+              label="Patient Name"
+              value={`${booking.patient.firstName} ${booking.patient.lastName}`}
+            />
+            <Detail label="Phone Number" value={booking.patient.phone} />
+            <Detail label="ZIP Code" value={booking.patient.zip} />
+          </div>
 
-          <h5 className="fw-bold mb-3">
-            Patient Information
-          </h5>
+          <hr className="my-4" />
 
-          <p>
-            <strong>Name:</strong>{" "}
-            {booking.patient.firstName} {booking.patient.lastName}
-          </p>
+          <h5 className="fw-bold mb-4">Appointment Preferences</h5>
 
-          <p>
-            <strong>Phone:</strong> {booking.patient.phone}
-          </p>
+          <div className="row">
+            <Detail
+              label="Reason"
+              value={booking.answers.reason.replaceAll("_", " ")}
+            />
+            <Detail
+              label="Insurance"
+              value={booking.answers.insurance}
+            />
+            <Detail
+              label="Clinic Preference"
+              value={booking.answers.clinicId}
+            />
+            <Detail
+              label="Preferred Time"
+              value={booking.answers.timeOfDay}
+            />
+          </div>
 
-          <p>
-            <strong>ZIP Code:</strong> {booking.patient.zip}
-          </p>
-
-          <hr />
-
-          <h5 className="fw-bold mb-3">
-            Appointment Preferences
-          </h5>
-
-          <p>
-            <strong>Reason:</strong>{" "}
-            {booking.answers.reason.replaceAll("_", " ")}
-          </p>
-
-          <p>
-            <strong>Insurance:</strong>{" "}
-            {booking.answers.insurance}
-          </p>
-
-          <p>
-            <strong>Clinic Preference:</strong>{" "}
-            {booking.answers.clinicId}
-          </p>
-
-          <p>
-            <strong>Preferred Time:</strong>{" "}
-            {booking.answers.timeOfDay}
-          </p>
-
-          <hr />
+          <hr className="my-4" />
 
           <div className="text-end">
             <button
-              className="btn btn-outline-primary"
+              className="btn btn-outline-primary px-4"
               onClick={() => navigate("/")}
             >
               Back to Home

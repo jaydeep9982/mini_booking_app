@@ -1,6 +1,7 @@
 package com.clinic.backend.service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -82,7 +83,13 @@ public class BookingService {
     
     
     public List<Booking> getAllBookings() {
-        return bookingRepository.getAllBookings();
+        List<Booking> bookings = bookingRepository.getAllBookings();
+
+        bookings.sort(
+            Comparator.comparing(Booking::getCreatedAt).reversed()
+        );
+
+        return bookings;
     }
     
     
@@ -95,6 +102,7 @@ public class BookingService {
                 "Booking not found"
             );
         }
+        
 
         return booking;
     }

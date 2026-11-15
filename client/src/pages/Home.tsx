@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getAllBookings } from "../services/apiService";
-import type { Booking } from "../services/apiService";
+import { getAllBookings } from "../Services/apiService";
+import type { Booking } from "../Services/apiService";
 
 function Home() {
   const navigate = useNavigate();
@@ -31,50 +31,41 @@ function Home() {
   return (
     <div className="container-fluid px-0">
 
-      {/* Welcome Section */}
-      <section className="bg-light py-5">
-        <div className="container py-4">
-          <div className="row align-items-center">
 
-            <div className="col-lg-8">
-              <span className="badge bg-primary px-3 py-2 mb-3">
-                ClearView Eye Care
-              </span>
+{/* Hero Section */}
+<section className="bg-light py-5">
+  <div className="container-fluid py-5">
+    <div className="row justify-content-center text-center">
 
-              <h1 className="display-4 fw-bold mb-3">
-                Your Vision, Our Priority.
-              </h1>
+      <div className="col-12 col-lg-10">
 
-              <p className="lead text-muted mb-4">
-                Find the right eye care specialist and schedule
-                your appointment at one of our three clinics.
-              </p>
+        <span className="badge bg-primary px-4 py-2 mb-4">
+          ClearView Eye Care
+        </span>
 
-              <button
-                className="btn btn-primary btn-lg px-4"
-                onClick={() => navigate("/patient-details")}
-              >
-                <i className="bi bi-calendar-check me-2"></i>
-                Book Appointment
-              </button>
-            </div>
+        <h1 className="display-2 fw-bold mb-4">
+          Your Vision, Our Priority.
+        </h1>
 
-            <div className="col-lg-4 text-center mt-4 mt-lg-0">
-              <div className="card border-0 shadow-sm rounded-4 p-4">
-                <i className="bi bi-eye text-primary display-1"></i>
-                <h4 className="fw-bold mt-3">
-                  ClearView Eye Care
-                </h4>
-                <p className="text-muted mb-0">
-                  Professional eye care and convenient
-                  appointment scheduling.
-                </p>
-              </div>
-            </div>
+        <p className="lead text-muted mx-auto mb-4"
+           style={{ maxWidth: "850px" }}>
+          Find the right eye care specialist and schedule
+          your appointment at one of our three clinics.
+        </p>
 
-          </div>
-        </div>
-      </section>
+        <button
+          className="btn btn-primary btn-lg px-5 py-3"
+          onClick={() => navigate("/patient-details")}
+        >
+          Book Appointment
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       {/* Bookings Section */}
       <section className="container py-5">
@@ -123,7 +114,7 @@ function Home() {
                   <thead className="table-light">
                     <tr>
                       <th className="p-3">Patient Name</th>
-                      <th className="p-3">Doctor</th>
+                      <th className="p-3">Slot</th>
                       <th className="p-3">Clinic</th>
                       <th className="p-3">Date & Time</th>
                       <th className="p-3">Action</th>
